@@ -3,7 +3,7 @@ import axios from 'axios';
 export default function() {
   const instance = axios.create({
     headers: {
-      Authorization: 'Bearer BQAwKnyEZsJuXzxNAVOqD0a9LKU_71I2TQvsrRdhKn75vgws-9qCLQMB0gViWM4aaaaExNvz3WB7U_yuymY'
+      Authorization: 'Bearer BQCxKPprOO8RhCGyVmu8Aq8fwfzj1l9JeFAIO4lM7xqiRxOnkJfy7Gk9ipxN9O2SobgsYAY669z7oitFzFo'
     }
   });
 

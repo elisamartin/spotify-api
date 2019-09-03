@@ -1,5 +1,18 @@
 import React, { Component } from 'react';
 import axios from './axios';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  font-family: "Raleway", sans-serif;
+  display: flex;
+`;
+const Category = styled.div`
+  cursor: pointer;
+`
+const Playlist = styled.a`
+  color: black;
+  padding: 5px;
+  `
 
 class App extends Component {
   constructor(props) {
@@ -31,27 +44,28 @@ class App extends Component {
 
   render() {
     return (
-      <div className='App'>
-        <h2>Sapi</h2>
+      <div clasName="App">
+        <h2>Sapi. Selecciona una categoria para ver sus playlists</h2>
+        <Container>
         <ul>
           {this.state.categories.map((category) => {
             return (
-              <div onClick={this.fetchPlaylists(category.id)} key={category.id}>
-                ID: {category.id}, Nombre: {category.name}
-              </div>
+              <Category onClick={this.fetchPlaylists(category.id)} key={category.id}>
+                {category.name}
+              </Category>
             );
           })}
         </ul>
-        <p>Playlists</p>
         <ul>
           {this.state.playlists.map((playlist) => {
             return (
-              <a href={playlist.external_urls.spotify} key={playlist.id}>
+              <Playlist href={playlist.external_urls.spotify} key={playlist.id}>
                 {playlist.name}
-              </a>
+              </Playlist>
             );
           })}
         </ul>
+      </Container>
       </div>
     );
   }
