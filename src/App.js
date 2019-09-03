@@ -12,7 +12,7 @@ const Container = styled.div`
   display: flex;
   align-items: baseline;
 `;
-const Category = styled.div`cursor: pointer;`;
+const Select = styled.select`padding: 10px;`;
 const Playlists = styled.div`
   width: 40%;
   padding-left: 5%;
@@ -54,20 +54,27 @@ class App extends Component {
       .catch((err) => console.log(err));
   };
 
+  onChange = (e) => {
+    this.fetchPlaylists(e.target.value);
+  };
+
   render() {
     return (
       <AppContainer>
         <Title>Sapi. Selecciona una categoria para ver sus playlists</Title>
         <Container>
-          <ul>
+          <Select defaultValue={'default'} onChange={this.onChange}>
+            <option value='default' disabled hidden>
+              Categorias
+            </option>
             {this.state.categories.map((category) => {
               return (
-                <Category onClick={() => this.fetchPlaylists(category.id)} key={category.id}>
+                <option key={category.id} value={category.id}>
                   {category.name}
-                </Category>
+                </option>
               );
             })}
-          </ul>
+          </Select>
           <Playlists>
             {this.state.playlists.map((playlist) => {
               return (
